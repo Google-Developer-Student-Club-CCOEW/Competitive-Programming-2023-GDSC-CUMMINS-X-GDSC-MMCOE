@@ -18,14 +18,14 @@ Just comment on the issue you want to code for. To contribute, simply follow the
 
 2. Clone the forked repository.
 
-**bash**
+***bash***
 ```
 git clone https://github.com/<your-github-username>/project_name.git
 ```
 
 3. Navigate to the project directory.
 
-**bash**
+***bash***
 ```
 cd Flutter
 ```
@@ -34,7 +34,7 @@ cd Flutter
    
 This is one of the very important steps that you should follow to contribute to Open Source. A branch helps to manage the workflow, isolate your code and does not create a mess. To create a new branch:
 
-**bash**
+***bash***
 ```
 $ git branch <name_of_branch>
 $ git checkout -b <name_of_branch>
@@ -42,7 +42,7 @@ $ git checkout -b <name_of_branch>
 
 Keep your cloned repo up to date by pulling from upstream (this will also avoid any merge conflicts while committing new changes)
 
-**bash**
+***bash***
 ```
 git pull origin main
 ```
@@ -51,7 +51,7 @@ git pull origin main
 
 6. Stage your changes and commit 📝
 
-**bash**
+***bash***
 
 **Add changes to Index**
 ```
@@ -65,7 +65,7 @@ git commit -m "<your_commit_message>"
 
 7. At this point you can use the git push command to push the changes to the current branch of your forked repository:
 
-**bash**
+***bash***
 ```
 git push origin <branch-name>
 ```
