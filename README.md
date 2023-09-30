@@ -1,6 +1,6 @@
 # Competitive-Programming-2023
 
-###What is Competitive Programming??
+### What is Competitive Programming??
 
 Competitive programming is a type of intellectual sport or mind sport that involves solving well-defined algorithmic and computational problems within a specified time limit. Participants, often called competitive programmers, use programming languages to devise efficient solutions to these problems.
 //The goal is to find the correct and most efficient solution within the given time frame.//
