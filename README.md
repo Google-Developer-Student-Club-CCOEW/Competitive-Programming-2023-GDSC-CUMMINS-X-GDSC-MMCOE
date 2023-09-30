@@ -1,5 +1,9 @@
 # Competitive-Programming-2023
 
+
+![GDSC](https://user-images.githubusercontent.com/56436897/193326497-f15493fe-c12e-455f-b86c-28fcf539e7a7.png)
+
+
 ## What is Competitive Programming??
 
 Competitive programming is a type of intellectual sport or mind sport that involves solving well-defined algorithmic and computational problems within a specified time limit. Participants, often called competitive programmers, use programming languages to devise efficient solutions to these problems.
@@ -27,6 +31,7 @@ cd Flutter
 ```
 
 4. Creating a new branch (IMP) 🌱
+   
 This is one of the very important steps that you should follow to contribute to Open Source. A branch helps to manage the workflow, isolate your code and does not create a mess. To create a new branch:
 
 **bash**
