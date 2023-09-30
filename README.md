@@ -14,10 +14,10 @@ Just comment on the issue you want to code for. To contribute, simply follow the
 
 2. Clone the forked repository.
 
-'''
+```
 bash
 git clone https://github.com/<your-github-username>/project_name.git
-'''
+```
 
 Navigate to the project directory.
 
