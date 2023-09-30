@@ -1,8 +1,6 @@
 # Competitive-Programming-2023
 
-
-![GDSC](https://user-images.githubusercontent.com/56436897/193326497-f15493fe-c12e-455f-b86c-28fcf539e7a7.png)
-
+![hacto](https://github.com/Google-Developer-Student-Club-CCOEW/Competitive-Programming-2023/assets/56436897/c430bbf2-5b14-40bf-8e91-748b629c766b)
 
 ## What is Competitive Programming??
 
