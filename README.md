@@ -52,12 +52,12 @@ git pull origin main
 6. Stage your changes and commit 📝
 
 **bash**
-# Add changes to Index
+**Add changes to Index
 ```
 git add .
 ```
 
-# Commit to the local repo
+**Commit to the local repo**
 ```
 git commit -m "<your_commit_message>"
 ```
