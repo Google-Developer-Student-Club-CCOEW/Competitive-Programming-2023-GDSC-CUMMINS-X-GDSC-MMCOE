@@ -1,47 +1,23 @@
 #include<bits/stdc++.h>
 using namespace std;
 
- int findPivotIndex(vector<int>& nums) {
-        int lo = 0, hi = nums.size()-1,mid;
-        int index = -1;
+  int peakIndexInMountainArray(vector<int>& arr) {
+       int n = arr.size();
+       int lo = 0,hi = n-1,mid;
 
-        while(lo < hi) {
-            mid = lo + (hi-lo)/2;
-            if(nums[mid] > nums[hi]) lo = mid + 1;
-            else {
-             
-                hi = mid;
-            }
-        }
+       while(hi - lo > 1) {
+           mid = lo + (hi-lo)/2;
+           if(arr[mid] > arr[mid-1]) lo = mid;
+           else hi = mid - 1;
+       } 
 
-        return hi;
-    }
-
-    int find(vector<int>& nums,int lo,int hi,int target) {
-        
-        while(lo <= hi) {
-            int mid = lo + (hi-lo)/2;
-            if(nums[mid] == target) return mid;
-            else if(nums[mid] > target) hi = mid-1;
-            else lo = mid + 1;
-        }
-
-        return -1;
-    }
-    int search(vector<int>& nums, int target) {
-        int n = nums.size();
-        int pivotIndex = findPivotIndex(nums);
-
-        int leftHalf = find(nums,0,pivotIndex,target);
-        int rightHalf = find(nums,pivotIndex,n-1,target);
-
-        if(leftHalf!=-1) return leftHalf;
-        return rightHalf;
+       if(arr[lo] > arr[hi]) return lo;
+       return hi;
     }
 
 int main() {
     vector<int>nums;
-    int x,size,target;
+    int x,size;
 
     cout << "Enter size:";
     cin >> size;
@@ -54,10 +30,9 @@ int main() {
     }
         cout << "\n";
 
-    cout << "Enter target value:";
-    cin >> target;
+    
 
     cout << "Output:";
-    cout << search(nums,target);
+    cout << peakIndexInMountainArray(nums);
 }
 
