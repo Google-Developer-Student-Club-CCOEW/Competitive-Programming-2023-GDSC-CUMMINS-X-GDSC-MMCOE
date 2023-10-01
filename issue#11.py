@@ -8,4 +8,4 @@ print("The list is: ",list)
 mid=nums//2
 
 l1=list[mid:]
-print(l1)
+print("The node is: ",l1)
