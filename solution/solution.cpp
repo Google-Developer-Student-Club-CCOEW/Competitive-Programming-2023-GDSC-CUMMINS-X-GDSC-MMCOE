@@ -1,0 +1,52 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+bool check(const vector<int> &nums, int maxOperations, int penalty)
+{
+    int ops = 0;
+    for (int num : nums)
+    {
+        ops += (num - 1) / penalty;
+    }
+    return ops <= maxOperations;
+}
+
+int minimumSize(vector<int> &nums, int maxOperations)
+{
+    int left = 1, right = *max_element(nums.begin(), nums.end());
+
+    while (left < right)
+    {
+        int mid = (left + right) / 2;
+
+        bool can_do_it = check(nums, maxOperations, mid);
+
+        if (can_do_it)
+        {
+            right = mid;
+        }
+        else
+        {
+            left = mid + 1;
+        }
+    }
+
+    return left;
+}
+
+int main()
+{
+
+    vector<int> nums = {2, 4, 8, 2};
+
+    int maxOperations = 4;
+
+    int result = minimumSize(nums, maxOperations);
+
+    cout << "Minimum size: " << result << endl;
+
+    return 0;
+}
