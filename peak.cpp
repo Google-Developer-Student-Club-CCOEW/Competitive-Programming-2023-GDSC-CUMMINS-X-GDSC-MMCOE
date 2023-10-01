@@ -21,4 +21,5 @@ int main()
         }
     }
     cout<<"\nThe peak index in the mountain array is : "<<peak<<endl;
+    return 0;
 }
