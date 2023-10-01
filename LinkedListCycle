@@ -1,0 +1,11 @@
+ if(head == NULL) return false;
+        ListNode *slow = head;
+        ListNode *fast = head;
+
+        while(fast && fast->next) {
+            fast = fast->next->next;
+            if(fast == slow) return true;
+            slow = slow->next;
+        }
+
+        return false;
