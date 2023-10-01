@@ -29,7 +29,9 @@ elif p%2==0:
     if 2 in q:
         print(2)
     else:
-        print(round(p))
-
+        if ((round(p))%1)>0.5:
+            print(round(p))
+        elif (p/(round(p))%1)<0.5:
+            print(round(p)+1)
 
     
