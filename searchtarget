@@ -1,0 +1,31 @@
+
+class Sol{
+  public int search(int[]nums,int target){
+int low=0;  //using binary search
+int high=nums.length-1;
+while(low<=high){
+int midp=(low+high)/2;
+int midnum=nums[midp];
+if(midnum==target){
+return midp;
+}
+else if(nums[low]<=midnum){
+if(nums[low]<=target&&target<midnum){
+high=midp-1;
+}
+else{
+low=midp+1;
+}
+}
+else{
+if(midnum<=target&&target<nums[high]){
+low=midp+1;
+}
+else{
+high=midp-1;
+}
+}
+return -1;//if the target is not found it will return -1;
+
+}
+}
