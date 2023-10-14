@@ -1,0 +1,28 @@
+def divide_into_two_sets(n):
+    total_sum = (n * (n + 1)) // 2  # Calculate the sum of numbers from 1 to n
+
+    # If the total sum is odd, it's not possible to divide into two sets with equal sums
+    if total_sum % 2 != 0:
+        print("NO")
+    else:
+        half_sum = total_sum // 2
+        set1 = []
+        set2 = []
+
+        while n > 0:
+            if half_sum - n >= 0:
+                set1.append(n)
+                half_sum -= n
+            else:
+                set2.append(n)
+            n -= 1
+
+        print("YES")
+        print(len(set1))
+        print(" ".join(map(str, set1)))
+        print(len(set2))
+        print(" ".join(map(str, set2))
+
+# Read input
+n = int(input())
+divide_into_two_sets(n)
