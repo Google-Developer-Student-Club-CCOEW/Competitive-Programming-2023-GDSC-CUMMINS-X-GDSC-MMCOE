@@ -1,0 +1,33 @@
+def shortestSubarrayWithSumAtLeastK(nums, k):
+    n = len(nums)
+    prefix_sum = [0] * (n + 1)
+
+    for i in range(n):
+        prefix_sum[i + 1] = prefix_sum[i] + nums[i]
+
+    min_length = n + 1
+    stack = []
+
+    for i in range(n + 1):
+        while stack and prefix_sum[i] - prefix_sum[stack[0]] >= k:
+            min_length = min(min_length, i - stack.pop(0))
+
+        while stack and prefix_sum[i] <= prefix_sum[stack[-1]]:
+            stack.pop()
+
+        stack.append(i)
+
+    return min_length if min_length <= n else -1
+
+# Test cases
+nums1 = [1]
+k1 = 1
+print(shortestSubarrayWithSumAtLeastK(nums1, k1))  # Output: 1
+
+nums2 = [1, 2]
+k2 = 4
+print(shortestSubarrayWithSumAtLeastK(nums2, k2))  # Output: -1
+
+nums3 = [2, -1, 2]
+k3 = 3
+print(shortestSubarrayWithSumAtLeastK(nums3, k3))  # Output: 3
