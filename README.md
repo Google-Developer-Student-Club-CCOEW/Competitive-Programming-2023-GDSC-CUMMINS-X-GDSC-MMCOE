@@ -72,3 +72,5 @@ git push origin <branch-name>
 🛠 (https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request) !
 
 9. ***Congratulations!***  🎉 Sit and relax, you've made your contribution to the Competitive Programming repository of GDSC Cummins under Hacktoberfest 2023.  🌟
+
+***When submitting your code, make sure to reference the question name so that your code is accepted without any issues.***
