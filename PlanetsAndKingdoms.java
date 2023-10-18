@@ -1,5 +1,4 @@
 //Issue no #155
-
 import java.util.*;
 
 public class PlanetKingdoms {
