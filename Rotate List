@@ -1,0 +1,51 @@
+class Solution
+{
+    public ListNode rotateRight(ListNode head, int k)
+    {
+        int size = len(head);
+        if (size == 0) return null;
+        k %= size;
+        if (k == 0) return head;
+       
+        ListNode fast = head;
+        while (k!= 0)
+        {
+            k--;
+            fast = fast.next;
+        }
+       
+        ListNode slow = head;
+        while (fast.next != null)
+        {
+            fast = fast.next;
+            slow = slow.next;
+        }
+       
+        ListNode result = slow.next;
+        slow.next = null;
+        fast.next = head;
+        return result;
+    }
+   
+   
+    int len(ListNode head)
+    {
+        int count = 0;
+        while (head != null)
+        {
+            ++count;
+            head = head.next;
+        }
+        return count;
+    }
+}
+
+Input
+head =
+[1,2,3,4,5]
+k =
+2
+Output
+[4,5,1,2,3]
+Expected
+[4,5,1,2,3]
