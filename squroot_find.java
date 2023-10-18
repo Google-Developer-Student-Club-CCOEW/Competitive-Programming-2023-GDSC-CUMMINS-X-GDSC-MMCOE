@@ -1,4 +1,4 @@
-public class divide_twoint {
+public class squroot_find {
     public int divide(int dividend, int divisor) {
         // Handle edge cases where the result may overflow.
         if (dividend == Integer.MIN_VALUE && divisor == -1) {
@@ -27,5 +27,21 @@ public class divide_twoint {
 
         // Apply the sign to the result and return it.
         return (int) (sign * result);
+    }
+
+    public static void main(String[] args) {
+        squroot_find solution = new squroot_find();
+
+        // Example 1
+        int dividend1 = 10;
+        int divisor1 = 3;
+        int output1 = solution.divide(dividend1, divisor1);
+        System.out.println(output1);  // Output: 3
+
+        // Example 2
+        int dividend2 = 7;
+        int divisor2 = -3;
+        int output2 = solution.divide(dividend2, divisor2);
+        System.out.println(output2);  // Output: -2
     }
 }
