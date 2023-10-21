@@ -1,0 +1,33 @@
+public class Solution {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        ListNode ptr1 = headA;
+        ListNode ptr2 = headB;
+
+        while(ptr1!=ptr2){
+            if(ptr1==null){
+                ptr1=headB;
+            }else{
+                ptr1=ptr1.next;
+            }
+
+            if(ptr2==null){
+                ptr2=headA;
+            }else{
+                ptr2=ptr2.next;
+            }
+        }
+
+        return ptr1;
+    }
+}
+
+Input
+8
+[4,1,8,4,5]
+[5,6,1,8,4,5]
+2
+3
+Output
+Intersected at '8'
+Expected
+Intersected at '8'
