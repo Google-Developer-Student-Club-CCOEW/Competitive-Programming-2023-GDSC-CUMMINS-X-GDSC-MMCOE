@@ -1,0 +1,65 @@
+
+//Solution to Issue #98 -> Vertical Order Traversal of Binary Tree
+
+class Solution {
+public:
+    vector<vector<int>> verticalTraversal(TreeNode* root) {
+        // Answer vector to store the vertical traversal results.
+        vector<vector<int>> ans;
+        
+        // Queue to perform a level-order traversal of the binary tree.
+        queue<pair<TreeNode*, pair<int, int>>> q;
+        
+        // Traverse from the root node
+        q.push({root, {0, 0}});
+        
+        // Map to store nodes based on their column, row, and values.
+        map<int, map<int, multiset<int>>> mp;
+        
+        // Level-order traversal of the binary tree.
+        while (!q.empty()) {
+            // Get the front element of the queue.
+            auto front = q.front();
+            q.pop();
+            
+            TreeNode* &node = front.first;
+            auto &coordinate = front.second;
+            int &row = coordinate.first;
+            int &col = coordinate.second;
+            
+            // Current node
+            mp[col][row].insert(node->val);
+            
+            // for Left child
+            if (node->left)
+                q.push({node->left, {row + 1, col - 1}});
+            
+            // for right child
+            if (node->right)
+                q.push({node->right, {row + 1, col + 1}});
+        }
+        
+        // Map to construct the final result vector.
+        for (auto it : mp) {
+            auto &colmap = it.second;
+            vector<int> vline;
+            
+            for (auto mpit : colmap) {
+                auto &mset = mpit.second;
+                vline.insert(vline.end(), mset.begin(), mset.end());
+            }
+            
+            // Adding the values from the current column to the answer vector.
+            ans.push_back(vline);
+        }
+        
+        // Return the vertical traversal result.
+        return ans;
+    }
+};
+
+
+/*
+	By Isha Baviskar (baviskarisha2194@gmail.com)
+	ID -> isha0904
+*/
