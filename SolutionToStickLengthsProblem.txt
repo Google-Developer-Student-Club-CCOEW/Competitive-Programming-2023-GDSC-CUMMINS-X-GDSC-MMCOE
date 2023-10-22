@@ -1,0 +1,23 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    long long a, c = 0;
+    cin >> a;
+    int b[a];
+    
+    for (int i; i < a; i++){
+        cin >> b[i];
+    }
+    
+    sort(b, b + a);
+    
+    for(int i; i < a; i++){
+        c += abs(b[a/2] - b[i]);
+    }
+    
+    cout << c;
+    
+    return 0;
+}
