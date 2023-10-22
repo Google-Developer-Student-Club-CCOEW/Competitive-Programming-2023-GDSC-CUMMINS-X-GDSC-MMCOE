@@ -1,0 +1,55 @@
+import java.util.Stack;
+
+public class MinStack {
+    private Stack<Integer> stack; // Main stack to store elements
+    private Stack<Integer> minStack; // Auxiliary stack to store minimum values
+
+    public MinStack() {
+        stack = new Stack<>();
+        minStack = new Stack<>();
+    }
+
+    // Push operation: Pushes an element onto the stack
+    public void push(int val) {
+        stack.push(val);
+
+        // Check if the minStack is empty or if the new element is the minimum
+        if (minStack.isEmpty() || val <= minStack.peek()) {
+            minStack.push(val);
+        }
+    }
+
+    // Pop operation: Removes the element at the top of the stack
+    public void pop() {
+        if (!stack.isEmpty()) {
+            // If the element to be removed is the minimum, update minStack
+            if (stack.peek().equals(minStack.peek())) {
+                minStack.pop();
+            }
+            stack.pop();
+        }
+    }
+
+    // Top operation: Retrieves the element at the top of the stack
+    public int top() {
+        return stack.peek();
+    }
+
+    // Get Minimum operation: Retrieves the minimum element in the stack
+    public int getMin() {
+        return minStack.peek();
+    }
+
+    public static void main(String[] args) {
+        MinStack minStack = new MinStack();
+        minStack.push(-2);
+        minStack.push(0);
+        minStack.push(-3);
+
+        System.out.println("Minimum element: " + minStack.getMin());
+        minStack.pop();
+        System.out.println("Top element: " + minStack.top());
+        System.out.println("Minimum element after pop: " + minStack.getMin());
+    }
+}
+
