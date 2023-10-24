@@ -1,0 +1,83 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+float MergeSortedArrays(int nums1[], int m, int nums2[], int n, int nums3[], int s)
+{
+    int i = 0, j = 0, k = 0;
+
+    while(i<m && j<n)
+    {
+        if(nums1[i] < nums2[j])
+        {
+            nums3[k] = nums1[i];
+            i++;
+            k++;
+        }
+
+        else
+        {
+            nums3[k] = nums2[j];
+            j++;
+            k++;
+        }
+    }
+
+    while(i<m)
+    {
+        nums3[k] = nums1[i];
+        i++;
+        k++;
+    }
+
+    while(j<n)
+    {
+        nums3[k] = nums2[j];
+        j++;
+        k++;
+    }
+
+    if(s % 2 != 0)
+    {
+        return (float)(nums3[s/2]);
+    }
+
+    else
+    {
+        return (float)(nums3[s/2] + nums3[(s/2)-1])/2;
+    }
+}
+
+int main()
+{
+    int m, n;
+
+    cout<<"Enter Size of 1st Array : "<<endl;
+    cin>>m;
+
+    cout<<"\nEnter Size of 2nd Array : "<<endl;
+    cin>>n;
+
+    int nums1[m], nums2[n];
+
+    cout<<"\nEnter "<<m<<" elements of 1st Array in Sorted Order\n"<<endl;
+    for(int i=0; i<m; i++)
+    {
+        cout<<"nums1["<<i<<"] : ";
+        cin>>nums1[i];
+    }
+
+    cout<<"\nEnter "<<n<<" elements of 2nd Array in Sorted Order\n"<<endl;
+    for(int i=0; i<n; i++)
+    {
+        cout<<"nums2["<<i<<"] : ";
+        cin>>nums2[i];
+    }
+
+    int s = m+n;
+    int nums3[s];
+
+    cout<<"\nThe Median of two Sorted Arrays is : "<< MergeSortedArrays(nums1, m, nums2, n, nums3, s)<<"\n";
+
+    return 0;
+}
