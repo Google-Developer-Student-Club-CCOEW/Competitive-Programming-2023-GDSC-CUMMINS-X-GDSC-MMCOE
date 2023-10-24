@@ -1,0 +1,84 @@
+import java.util.HashMap;
+import java.util.Map;
+
+class Node {
+    int val;
+    Node next;
+    Node random;
+
+    public Node(int val) {
+        this.val = val;
+    }
+}
+
+public class DeepCopyLinkedListWithRandomPointer {
+    public Node copyRandomList(Node head) {
+        if (head == null) return null;
+
+        // Step 1: Create a mapping between original nodes and copied nodes.
+        Map<Node, Node> nodeMapping = new HashMap<>();
+
+        // Step 2: Create copied nodes and store them in the mapping.
+        Node current = head;
+        while (current != null) {
+            nodeMapping.put(current, new Node(current.val));
+            current = current.next;
+        }
+
+        // Step 3: Iterate through the original list and set the next and random pointers.
+        current = head;
+        while (current != null) {
+            Node copiedNode = nodeMapping.get(current);
+            copiedNode.next = nodeMapping.get(current.next);
+            copiedNode.random = nodeMapping.get(current.random);
+            current = current.next;
+        }
+
+        // Return the head of the copied list.
+        return nodeMapping.get(head);
+    }
+
+    public static void main(String[] args) {
+        // Create a sample linked list with random pointers.
+        Node head = new Node(7);
+        Node node1 = new Node(13);
+        Node node2 = new Node(11);
+        Node node3 = new Node(10);
+        Node node4 = new Node(1);
+
+        head.next = node1;
+        node1.next = node2;
+        node2.next = node3;
+        node3.next = node4;
+
+        head.random = null;
+        node1.random = head;
+        node2.random = node4;
+        node3.random = node2;
+        node4.random = head;
+
+        // Create an instance of DeepCopyLinkedListWithRandomPointer and make a deep copy.
+        DeepCopyLinkedListWithRandomPointer copier = new DeepCopyLinkedListWithRandomPointer();
+        Node copiedHead = copier.copyRandomList(head);
+
+        // Print the copied linked list to verify the result in the specified format.
+        while (copiedHead != null) {
+            int randomIndex = copiedHead.random != null ? findIndex(head, copiedHead.random) : -1;
+            System.out.println("[" + copiedHead.val + "," + randomIndex + "]");
+            copiedHead = copiedHead.next;
+        }
+    }
+
+    // Helper function to find the index of a node in the original list
+    private static int findIndex(Node head, Node target) {
+        int index = 0;
+        while (head != null) {
+            if (head == target) {
+                return index;
+            }
+            head = head.next;
+            index++;
+        }
+        return -1; // Node not found
+    }
+}
