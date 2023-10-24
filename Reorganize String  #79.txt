@@ -1,0 +1,67 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+string reorganize(string str)
+{
+    unordered_map<char, int> mp;
+    int mx=0;
+    char ch;
+    for(char c:str)
+    {
+        mp[c]++;
+        if(mx<mp[c])
+        {
+            mx=mp[c];
+            ch=c;
+        }
+    }
+    int n=str.size();
+    vector<char> v(n);
+    int i=0;
+    while(mx--)
+    {
+        if(i>=n)
+        {
+            return "''";
+        }
+        v[i]=ch;
+        i+=2;
+    }
+    for(auto it:mp)
+    {
+        if(it.first!=ch)
+        {
+            int k=it.second;
+            while(k--)
+            {
+                if(i>=n)
+                {
+                    i=1;
+                }
+                v[i]=it.first;
+                i+=2;
+
+            }
+        }
+    }
+    string ans = "";
+    for(int i=0; i<n; i++)
+    {
+        ans+=v[i];
+    }
+
+    return ans;
+}
+
+int main()
+{
+    string str;
+
+    cout<<"\nEnter a string : "<<endl;
+    cin>>str;
+
+    cout<<"\nOutput : "<<reorganize(str)<<endl;
+
+    return 0;
+}
