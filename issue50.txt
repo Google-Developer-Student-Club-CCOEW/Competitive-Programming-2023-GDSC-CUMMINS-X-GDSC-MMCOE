@@ -1,0 +1,82 @@
+ISSUE.NO.50 #Android 
+by tejal hajari
+
+MINI CALCULATOR
+
+ import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Calculator {
+    private static JTextField inputField;
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            createAndShowGUI();
+        });
+    }
+
+    private static void createAndShowGUI() {
+        JFrame frame = new JFrame("Calculator");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(300, 400);
+        frame.setLayout(new BorderLayout());
+
+        inputField = new JTextField();
+        inputField.setHorizontalAlignment(JTextField.RIGHT);
+        frame.add(inputField, BorderLayout.NORTH);
+
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new GridLayout(4, 4));
+
+        String[] buttonLabels = {
+            "7", "8", "9", "/",
+            "4", "5", "6", "*",
+            "1", "2", "3", "-",
+            "0", "C", "=", "+"
+        };
+
+        for (String label : buttonLabels) {
+            JButton button = new JButton(label);
+            button.addActionListener(new ButtonClickListener());
+            buttonPanel.add(button);
+        }
+
+        frame.add(buttonPanel, BorderLayout.CENTER);
+
+        frame.setVisible(true);
+    }
+
+    private static class ButtonClickListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            JButton source = (JButton) e.getSource();
+            String buttonText = source.getText();
+
+            switch (buttonText) {
+                case "C":
+                    inputField.setText("");
+                    break;
+                case "=":
+                    try {
+                        String expression = inputField.getText();
+                        double result = evaluateExpression(expression);
+                        inputField.setText(String.valueOf(result));
+                    } catch (Exception ex) {
+                        inputField.setText("Error");
+                    }
+                    break;
+                default:
+                    inputField.setText(inputField.getText() + buttonText);
+                    break;
+            }
+        }
+
+        private double evaluateExpression(String expression) {
+            // Implement your expression evaluation logic here
+            // For simplicity, you can use JavaScript engine or other libraries for this purpose
+            // Example using JavaScript engine: https://stackoverflow.com/a/34226791
+            return 0; // Placeholder return value
+        }
+    }
+}
