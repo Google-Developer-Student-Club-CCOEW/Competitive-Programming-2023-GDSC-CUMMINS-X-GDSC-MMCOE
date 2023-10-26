@@ -1,0 +1,6 @@
+class Solution{
+  public int kth(int[] arr,int n){
+ Arrays.sort(arr);//sorting the array
+return arr[arr.length-n];
+}
+}

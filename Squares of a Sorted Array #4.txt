@@ -1,0 +1,42 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+void squareOfarray(int nums[], int n)      //Function definition of squareOfarray
+{
+    for(int i=0; i<n; i++)
+    {
+        nums[i] = nums[i]*nums[i];        //Square the a[i]th element
+    }
+
+    sort(nums, nums+n);        //Sort the array
+}
+
+int main()
+{
+    int n;
+
+    cout<<"Enter Size of Array : "<<endl;     //Input size of array
+    cin>>n;
+
+    int nums[n];           //Declare array nums with size n
+
+    for(int i=0; i<n; i++)
+    {
+        cout<<"\nEnter No. "<<i+1<<" : "<<endl;   //Input elements of array
+        cin>>nums[i];
+    }
+
+    squareOfarray(nums, n);   //Call function squareOfarray
+
+    cout<<"\nOutput : ";
+
+    for(int i=0; i<n; i++)
+    {
+        cout<<nums[i]<<" ";    //Print the elements of array
+    }
+
+    cout<<"\n";
+
+    return 0;
+}
