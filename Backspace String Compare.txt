@@ -1,0 +1,38 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        String t = sc.nextLine();
+
+        String result1 = processString(s);
+        String result2 = processString(t);
+
+        boolean isEqual = result1.equals(result2);
+        System.out.println(isEqual);
+    }
+
+    public static String processString(String str) {
+        Stack<Character> stack = new Stack<>();
+        
+        for (char c : str.toCharArray()) {
+            if (c == '#') {
+                if (!stack.isEmpty()) {
+                    stack.pop(); // Simulate backspace by popping from the stack.
+                }
+            } else {
+                stack.push(c);
+            }
+        }
+
+        // Convert the stack back to a string.
+        StringBuilder result = new StringBuilder();
+        while (!stack.isEmpty()) {
+            result.insert(0, stack.pop());
+        }
+
+        return result.toString();
+    }
+}
