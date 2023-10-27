@@ -1,0 +1,47 @@
+//Solution to Array Description Problem in C Language.
+//By Tejal Hajari
+
+
+#include <stdio.h>
+#define MOD 1000000007
+
+int main() {
+    int n, m;
+    scanf("%d %d", &n, &m);
+    
+    int x[n];
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &x[i]);
+    }
+
+    int dp[n + 1][m + 1];
+    
+    // Initialize base cases
+    for (int j = 1; j <= m; j++) {
+        if (x[0] == 0 || x[0] == j) {
+            dp[1][j] = 1;
+        } else {
+            dp[1][j] = 0;
+        }
+    }
+    
+    // Dynamic programming
+    for (int i = 2; i <= n; i++) {
+        for (int j = 1; j <= m; j++) {
+            dp[i][j] = 0;
+            if (x[i - 1] == 0 || x[i - 1] == j) {
+                dp[i][j] = (dp[i - 1][j - 1] + dp[i - 1][j] + dp[i - 1][j + 1]) % MOD;
+            }
+        }
+    }
+    
+    // Calculate the total count of arrays
+    int total_count = 0;
+    for (int j = 1; j <= m; j++) {
+        total_count = (total_count + dp[n][j]) % MOD;
+    }
+    
+    printf("%d\n", total_count);
+    
+    return 0;
+}
